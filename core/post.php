@@ -2,10 +2,10 @@
     class Post{
         //db stuff
         private $conn;
-        private $table = 'posts';
+        private $table = 'phprest';
 
         //post properties
-        public $id;
+        public $phprest_id;
         public $category_id;
         public $category_name;
         public $title;
@@ -22,16 +22,16 @@
             //create query
             $query = 'SELECT 
                 c.name as category_name,
-                p.id,
+                p.phprest_id,
                 p.category_id,
                 p.title,
                 p.body,
                 p.author,
                 p.created_at
                 FROM
-                ' . $this->table . 'p
+                ' . $this->table . ' p
                 LEFT JOIN
-                    categories c ON p.category_id = c.id
+                    category c ON p.category_id = c.category_id
                     ORDERED BY p.created_at  DESC;
             ';
             //prepare statement

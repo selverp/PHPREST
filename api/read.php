@@ -1,8 +1,9 @@
 <?php
     //headers
-    heared('Access--Control-Allow-Origin: #');
+    header('Access--Control-Allow-Origin: #');
     header('Content-Type: application/json');
     include_once('../core/initialize.php');
+   
     //instantiade post
     $post = new Post($db);
     //blog post query
@@ -12,10 +13,10 @@
     if($num>0){
         $post_arr = array();
         $post_arr['data'] = array();
-        while($row = $result->fetch()PDO::FETCH_ASSOC){
-            exctract($row);
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
             $post_item = array(
-                'id' => $id,
+                'phprest_id' => $phprest_id,
                 'title' => $title,
                 'body' => html_entity_decode($body),
                 'author' => $author,
