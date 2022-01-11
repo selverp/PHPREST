@@ -12,4 +12,4 @@
 
     require_once(CORE_PATH.DS."post.php");
 
->?
+?>
