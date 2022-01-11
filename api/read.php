@@ -1,6 +1,6 @@
 <?php
     //headers
-    header('Access--Control-Allow-Origin: #');
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
     include_once('../core/initialize.php');
    
@@ -14,6 +14,10 @@
         $post_arr = array();
         $post_arr['data'] = array();
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
+            //create name variable i fill with data from database
+            // $my_array = array("a" => "Cat","b" => "Dog", "c" => "Horse");
+            // extract($my_array);
+            // echo "\$a = $a; \$b = $b; \$c = $c";
             extract($row);
             $post_item = array(
                 'phprest_id' => $phprest_id,
