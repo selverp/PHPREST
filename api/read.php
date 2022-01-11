@@ -2,7 +2,6 @@
     //headers
     heared('Access--Control-Allow-Origin: #');
     header('Content-Type: application/json');
-
     include_once('../core/initialize.php');
     //instantiade post
     $post = new Post($db);
@@ -25,7 +24,7 @@
             );
             array_push($post_arr['data'], $post_item);
         }
-            //convert to JSON and output
+            //convert to JSON and output 
             echo json_encode($post_arr);
     }else{
         echo json_encode(array('message' => 'No posts found.'));

@@ -1,5 +1,5 @@
 <?php
-    //directory separator
+    //directory separators
     define('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
     define('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'xamp_8.0.5' .DS. 'htdocs'.DS.'phprest');
     //xamp_8.0.5/htdocs/phprest/includes

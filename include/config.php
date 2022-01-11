@@ -1,5 +1,5 @@
 <?php
-
+    //db config
     $db_user = 'root';
     $db_password = '';
     $db_name = 'phprest';
