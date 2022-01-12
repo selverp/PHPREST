@@ -41,7 +41,7 @@
             return $stmt;
         }
             
-        public function read_single(){
+        public function readSingle(){
             //create query
             $query = 'SELECT 
                 c.name as category_name,
@@ -68,5 +68,73 @@
             $this->author = $row['author'];
             $this->category_id = $row['category_id'];
             $this->category_name = $row['category_name'];
+        }
+
+        public function create(){
+            //create query
+            //$query = 'INSERT INTO ' . $this->table . '(title, body, author, category_id) VALUES (:title, :body, :author, :category_id;';
+            $query = 'INSERT INTO ' . $this->table . ' SET category_id = :category_id, title = :title, body = :body, author = :author';
+            //prepere statemant
+            $stmt = $this->conn->prepare($query);
+            //clin data
+            $this->title = htmlspecialchars(strip_tags($this->title));
+            $this->body = htmlspecialchars(strip_tags($this->body));
+            $this->author = htmlspecialchars(strip_tags($this->author));
+            $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+            //binding of parameters
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':body', $this->body);
+            $stmt->bindParam(':author', $this->author);
+            $stmt->bindParam(':category_id', $this->category_id);
+            //execute the query
+            if($stmt->execute()){
+                return true;
+            }
+            //print error if something goes wrong
+            returnf("Error %s .\n", $stms->error);
+        }
+
+        public function update(){
+            //create query
+            //$query = 'INSERT INTO ' . $this->table . '(title, body, author, category_id) VALUES (:title, :body, :author, :category_id;';
+            $query = 'UPDATE ' . $this->table . ' SET category_id = :category_id, title = :title, body = :body, author = :author
+                      WHERE phprest_id = :phprest_id';
+            //prepere statemant
+            $stmt = $this->conn->prepare($query);
+            //clin data
+            $this->title = htmlspecialchars(strip_tags($this->title));
+            $this->body = htmlspecialchars(strip_tags($this->body));
+            $this->author = htmlspecialchars(strip_tags($this->author));
+            $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+            $this->phprest_id = htmlspecialchars(strip_tags($this->phprest_id));
+            //binding of parameters
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':body', $this->body);
+            $stmt->bindParam(':author', $this->author);
+            $stmt->bindParam(':category_id', $this->category_id);
+            $stmt->bindParam(':phprest_id', $this->phprest_id);
+            //execute the query
+            if($stmt->execute()){
+                return true;
+            }
+            //print error if something goes wrong
+            printf("Error %s .\n", $stms->error);
+            return false;
+        }
+        public function delete(){
+            //create query
+            $query = 'DELETE FROM ' . $this->table . ' WHERE phprest_id = :phprest_id';
+            //prepare statemant
+            $stmt = $this->conn->prepare($query);
+            //clean the data
+            $this->phprest_id = htmlspecialchars(strip_tags($this->phprest_id));
+            $stmt->bindParam(':phprest_id',$this->phprest_id);
+            //execute the query
+            if($stmt->execute()){
+                return true;
+            }
+            //print error if something goes wrong
+            printf("Error %s .\n", $stms->error);
+            return false;
         }
     }

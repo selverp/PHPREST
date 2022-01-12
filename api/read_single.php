@@ -10,7 +10,7 @@
     $post = new Post($db);
     
     $post->id = isset($_GET['id']) ? $_GET['id'] : die();
-    $post->read_single();
+    $post->readSingle();
 
     $post_arr = array(
         'id' => $post->id,
