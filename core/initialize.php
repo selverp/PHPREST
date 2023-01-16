@@ -1,7 +1,7 @@
 <?php
     //directory separators
     defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
-    defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'xamp_8.0.5' .DS. 'htdocs'.DS.'phprest');
+    defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'xampp' .DS. 'htdocs'.DS.'phprest');
     //xamp_8.0.5/htdocs/phprest/includes
     defined('INC_PATH') ? null : define('INC_PATH', SITE_ROOT.DS.'include');
     defined('CORE_PATH') ? null : define('CORE_PATH', SITE_ROOT.DS.'core');
