@@ -14,12 +14,7 @@
     
     //string passed via params - localhost/phprest/api/delete.php?phprest_id=7
     $url_components = parse_url($_SERVER['REQUEST_URI']);
-    //  Array
-    // (
-    //     [path] => delete.php
-    //     [query] => phprest_id=7
-    // )
-    
+
     // Use parse_str() function to parse the string passed via URL
     parse_str($url_components['query'], $params);
         
